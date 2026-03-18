@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    restart: unless-stopped
+    build: .
+    image: node:20-alpine
+    command: ["npm", "start"]
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    networks:
+      - dokploy-network
+
+networks:
+  dokploy-network:
+    external: true
